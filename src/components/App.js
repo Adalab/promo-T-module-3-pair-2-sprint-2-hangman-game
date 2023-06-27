@@ -9,6 +9,7 @@ import '../styles/Letters.scss';
 import '../styles/Form.scss';
 import '../styles/Header.scss';
 
+
 function App() {
   const [word, setWord] = useState('');
   const [userLetters, setUserLetters] = useState([]);
