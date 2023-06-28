@@ -8,6 +8,7 @@ import '../styles/Dummy.scss';
 import '../styles/Letters.scss';
 import '../styles/Form.scss';
 import '../styles/Header.scss';
+import Header from './Header';
 
 function App() {
   const [word, setWord] = useState('');
@@ -83,9 +84,7 @@ function App() {
 
   return (
     <div className='page'>
-      <header>
-        <h1 className='header__title'>Juego del ahorcado</h1>
-      </header>
+     <Header />
       <main className='main'>
         <section>
           <div className='solution'>
