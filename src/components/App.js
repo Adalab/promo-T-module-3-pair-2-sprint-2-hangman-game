@@ -11,6 +11,8 @@ import '../styles/Header.scss';
 import Header from './Header';
 import Dummy from './Dummy';
 import SolutionLetters from './SolutionLetters';
+import ErrorLetters from './ErrorLetters';
+import PropTypes from 'prop-types';
 
 function App() {
   const [word, setWord] = useState('');
@@ -31,7 +33,7 @@ function App() {
   };
 
   const handleChange = (ev) => {
-    let re = /^[a-zA-ZñÑá-úÁ-Ú´]$/; //add regular pattern 
+    let re = /^[a-zA-ZñÑá-úÁ-Ú´]$/; //add regular pattern
     if (re.test(ev.target.value) || ev.target.value === '') {
       handleLastLetter(ev.target.value);
     }
@@ -86,14 +88,19 @@ function App() {
 
   return (
     <div className='page'>
-     <Header />
+      <Header />
       <main className='main'>
         <section>
-          <SolutionLetters word= {word} userLetters={userLetters} renderSolutionLetters={renderSolutionLetters}/>
-          <div className='error'>
-            <h2 className='title'>Letras falladas:</h2>
-            <ul className='letters'>{renderErrorLetters()}</ul>
-          </div>
+          <SolutionLetters
+            word={word}
+            userLetters={userLetters}
+            renderSolutionLetters={renderSolutionLetters}
+          />
+          <ErrorLetters
+            word={word}
+            userLetters={userLetters}
+            renderErrorLetters={renderErrorLetters}
+          />
           <form className='form' onSubmit={handleSubmit}>
             <label className='title' htmlFor='last-letter'>
               Escribe una letra:
@@ -112,7 +119,7 @@ function App() {
             />
           </form>
         </section>
-      <Dummy NumberOfErrors={getNumberOfErrors}/>
+        <Dummy NumberOfErrors={getNumberOfErrors} />
       </main>
     </div>
   );
